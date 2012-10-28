@@ -236,8 +236,8 @@
 (setq rinari-tags-file "TAGS")
 
 ;; haml-mode
-(add-to-list 'load-path "~/.emacs.d/elpa/haml-mode")
-(require 'haml-mode)
+;(add-to-list 'load-path "~/.emacs.d/elpa/haml-mode")
+;(require 'haml-mode)
 
 ;; sass-mode
 ;(add-to-list 'load-path "~/.emacs.d/elpa/sass-mode")
