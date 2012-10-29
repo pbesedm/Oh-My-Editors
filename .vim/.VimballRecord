@@ -1,0 +1,2 @@
+hints_man2.vba: call delete('/home/wind/.vim/ftplugin/c/hints_man2.vim')
+hints_man3.vba: call delete('/home/wind/.vim/ftplugin/c/hints_man3.vim')

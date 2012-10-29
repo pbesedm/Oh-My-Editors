@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/tmp/wind-tmp/gendesk/pkg'
+let g:netrw_dirhist_2='/home/wind/.mutt'
+let g:netrw_dirhist_3='/etc/systemd/user'
+let g:netrw_dirhist_4='/home/wind/tmp'
+let g:netrw_dirhist_5='/home/wind'
+let g:netrw_dirhist_6='/home/wind/qomo-repo/own/catalyst-lenovo'
+let g:netrw_dirhist_7='/etc/yum/repos.d'
+let g:netrw_dirhist_8='/home/wind/qomo-repo/aur/catalyst-utils'
