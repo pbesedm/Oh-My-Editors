@@ -439,7 +439,6 @@
  '(global-hl-line-sticky-flag t)
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
- '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
