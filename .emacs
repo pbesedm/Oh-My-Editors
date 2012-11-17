@@ -442,6 +442,7 @@
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
+ '(menu-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
