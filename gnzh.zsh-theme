@@ -47,7 +47,7 @@ local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 
 #PROMPT="${user_host} ${current_dir} ${rvm_ruby} ${git_branch}$PR_PROMPT "
 PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}
-╰─$PR_PROMPT $(prompt_char)"
+╰─$PR_PROMPT"
 RPS1="${return_code}"
 RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
 
