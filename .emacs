@@ -435,15 +435,19 @@
  '(custom-enabled-themes (quote (wombat)))
  '(font-use-system-font t)
  '(global-ede-mode t)
+ '(global-hl-line-mode t)
+ '(global-hl-line-sticky-flag t)
  '(guru-mode nil)
+ '(hl-line-sticky-flag t)
+ '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
- '(menu-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "apple" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Monaco" :foundry "apple" :slant normal :weight normal :height 98 :width normal))))
+ '(hl-line ((t (:background "#333" :underline nil :weight semi-bold)))))
