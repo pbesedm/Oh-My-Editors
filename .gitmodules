@@ -158,3 +158,7 @@
 	path = .vim/bundle/zencoding-vim
 	url = git://github.com/mattn/zencoding-vim.git
 	ignore = dirty
+[submodule ".emacs.d/elpa/python"]
+	path = .emacs.d/elpa/python
+	url = git://github.com/emacsmirror/python-mode.git
+	ignore = dirty
