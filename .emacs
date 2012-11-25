@@ -270,12 +270,39 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-20120720")
 (require 'popup)
 
+;; pymacs 配置
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+;; python-mode 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/python")
+(setq py-install-directory "~/.emacs.d/elpa/python")
+(require 'python-mode)
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(setq py-load-pymacs-p t)
+(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
+(require 'pycomplete)
+
+(require 'ipython)
+
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/ac-dict")
 (ac-config-default)
 (ac-stop)
+(global-auto-complete-mode t)
+(setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
+(set-face-background 'ac-candidate-face "lightgray")
+(set-face-underline 'ac-candidate-face "darkgray")
+(set-face-background 'ac-selection-face "steelblue")
+(define-key ac-completing-map "\M-n" 'ac-next)  ;;; 列表中通过按M-n来向下移动
+(define-key ac-completing-map "\M-p" 'ac-previous)
 (setq ac-auto-start 2)
 (setq ac-auto-show-menu 0.8)
 (setq ac-quick-help-delay 0.1)
@@ -367,24 +394,6 @@
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 
-;(defun my-c-mode-cedet-hook ()
-;  (local-set-key "." 'semantic-complete-self-insert)
-;  (local-set-key ">" 'semantic-complete-self-insert))
-;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-
-;; nxhtml
-;(load "~/.emacs.d/elpa/nxhtml/autostart")
-;; 支持 erb 模式
-;(autoload 'eruby-nxhtml-mumamo-mode "autostart.el" "Edit erb document." t)  
-;(add-to-list 'auto-mode-alist '("\\.erb" . eruby-nxhtml-mumamo-mode))
-;(setq mumamo-background-colors nil)  
-;(eval-after-load "bytecomp"
-;                 '(add-to-list 'byte-compile-not-obsolete-vars
-;                               'font-lock-beginning-of-syntax-function))
-;(eval-after-load "bytecomp"
-;                 '(add-to-list 'byte-compile-not-obsolete-vars
-;                               'font-lock-syntactic-keywords))
-
 ;; rhtml mode
 (add-to-list 'load-path "~/.emacs.d/elpa/rhtml")
 (require 'rhtml-mode)
@@ -431,6 +440,7 @@
 ;; 有同名 buffer 时显示上层目录名称
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
