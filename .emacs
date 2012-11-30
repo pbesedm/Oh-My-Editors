@@ -278,33 +278,25 @@
 (ac-stop)
 (setq ac-auto-start 2)
 (setq ac-auto-show-menu 0.8)
-
-;; auto-complete-clang
-;(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-clang-20120612")
-;(require 'auto-complete-clang)
-
-;; 添加 c-mode 和 c++-mode 的hook，开启  auto-complete 的 clang 扩展
-;(defun wttr/ac-cc-mode-setup ()
-;  (make-local-variable 'ac-auto-start)
-;  (setq ac-auto-start nil)              ; auto complete using clang is CPU sensitive
-;  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
-;(add-hook 'c-mode-hook 'wttr/ac-cc-mode-setup)
-;(add-hook 'c++-mode-hook 'wttr/ac-cc-mode-setup)
-
-(setq ac-clang-flags (list
-                        "/usr/include"
-                        "/usr/include/Qt"
-                        "/usr/include/QtCore"
-                        "/usr/include/QtGui"
-                        "/usr/include/QtNetwork"
-                        "/usr/include/QtSql"
-                        "/usr/include/c++/4.6.3/bits"
-                        "/usr/include/c++/4.6.3/tr1"
-                        "/usr/include/x86_64-linux-gnu/bits"
-                        "/usr/local/include"
-                       ))
-
 (setq ac-quick-help-delay 0.1)
+
+;; auto-complate-clang-async 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/emacs-clang-complete-async")
+(require 'auto-complete-clang-async)
+
+(defun ac-cc-mode-setup ()
+ (setq ac-clang-complete-executable "~/.emacs.d/elpa/emacs-clang-complete-async/clang-complete")
+ (setq ac-sources '(ac-source-clang-async))
+ (ac-clang-launch-completion-process)
+ )
+
+(defun my-ac-config ()
+ (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+ (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+ (global-auto-complete-mode t)
+)
+
+(my-ac-config)
 
 ;; Rainbow-mode for edit css-like Files
 (add-to-list 'load-path "~/.emacs.d/elpa/rainbow-mode-0.2")
@@ -409,6 +401,19 @@
 
 (add-to-list 'auto-mode-alist '("\\.ejs$" . rhtml-mode))
 
+;; python-mode 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/python")
+(require 'python-mode)
+;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(setq py-load-pymacs-p t)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/anything")
+(require 'anything)
+(require 'anything-ipython)
+(when (require 'anything-show-completion nil t)
+ (use-anything-show-completion 'anything-ipython-complete
+  								'(length initial-pattern)))
+
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev                 ; 搜索当前 buffer
@@ -440,6 +445,7 @@
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
  '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
