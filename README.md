@@ -5,11 +5,16 @@ Oh-My-Editors
 
 python 的相关配置：
 
-1. 下载 Rope 和 Ropemacs（没有配置），安装 Ropemacs 前，必须先安装 rope 和 pymacs
+1. 下载 Rope 和 Ropemacs（尚未配置），安装 Ropemacs 前，必须先安装 rope 和 pymacs
 2. rope 安装方法：python setup.py install （可能需要 root 权限）
 3. pymacs 安装方法：python setup.py install （可能需要 root 权限）
 4. 将 pymacs.el 拷贝到 ~/.emacs.d/elpa/python/completion/
 5. 拷贝 pycomplete.py 到 PYTHONPATH （比如：/usr/lib/python3.3/site-packages/）
+
+使用clang实现 C/C++ 智能补全的配置：
+1. 安装 clang 和 llvm
+2. 进入 ~/.emacs.d/elpa/emacs-clang-complete-async 并执行 make 命令，生成
+   clang-complete 可执行文件
 
 1. git submodule init
 2. git submodule update
