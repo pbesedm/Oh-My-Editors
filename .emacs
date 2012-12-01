@@ -270,41 +270,59 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-20120720")
 (require 'popup)
 
+;; pymacs 配置
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+;; python-mode 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/python")
+(setq py-install-directory "~/.emacs.d/elpa/python")
+(require 'python-mode)
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(setq py-load-pymacs-p t)
+(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
+(require 'pycomplete)
+
+;(require 'ipython)
+
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/ac-dict")
 (ac-config-default)
-(ac-stop)
+(global-auto-complete-mode t)
+(setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
+(set-face-background 'ac-candidate-face "lightgray")
+(set-face-underline 'ac-candidate-face "darkgray")
+(set-face-background 'ac-selection-face "steelblue")
+(define-key ac-completing-map "\M-n" 'ac-next)  ;;; 列表中通过按M-n来向下移动
+(define-key ac-completing-map "\M-p" 'ac-previous)
 (setq ac-auto-start 2)
 (setq ac-auto-show-menu 0.8)
-
-;; auto-complete-clang
-;(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-clang-20120612")
-;(require 'auto-complete-clang)
-
-;; 添加 c-mode 和 c++-mode 的hook，开启  auto-complete 的 clang 扩展
-;(defun wttr/ac-cc-mode-setup ()
-;  (make-local-variable 'ac-auto-start)
-;  (setq ac-auto-start nil)              ; auto complete using clang is CPU sensitive
-;  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
-;(add-hook 'c-mode-hook 'wttr/ac-cc-mode-setup)
-;(add-hook 'c++-mode-hook 'wttr/ac-cc-mode-setup)
-
-(setq ac-clang-flags (list
-                        "/usr/include"
-                        "/usr/include/Qt"
-                        "/usr/include/QtCore"
-                        "/usr/include/QtGui"
-                        "/usr/include/QtNetwork"
-                        "/usr/include/QtSql"
-                        "/usr/include/c++/4.6.3/bits"
-                        "/usr/include/c++/4.6.3/tr1"
-                        "/usr/include/x86_64-linux-gnu/bits"
-                        "/usr/local/include"
-                       ))
-
 (setq ac-quick-help-delay 0.1)
+
+;; auto-complate-clang-async 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/emacs-clang-complete-async")
+(require 'auto-complete-clang-async)
+
+(defun ac-cc-mode-setup ()
+ (setq ac-clang-complete-executable "~/.emacs.d/elpa/emacs-clang-complete-async/clang-complete")
+ (setq ac-sources '(ac-source-clang-async))
+ (ac-clang-launch-completion-process)
+ )
+
+(defun my-ac-config ()
+ (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+ (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+ (global-auto-complete-mode t)
+)
+
+(my-ac-config)
 
 ;; Rainbow-mode for edit css-like Files
 (add-to-list 'load-path "~/.emacs.d/elpa/rainbow-mode-0.2")
@@ -375,24 +393,6 @@
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
 
-;(defun my-c-mode-cedet-hook ()
-;  (local-set-key "." 'semantic-complete-self-insert)
-;  (local-set-key ">" 'semantic-complete-self-insert))
-;(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-
-;; nxhtml
-;(load "~/.emacs.d/elpa/nxhtml/autostart")
-;; 支持 erb 模式
-;(autoload 'eruby-nxhtml-mumamo-mode "autostart.el" "Edit erb document." t)  
-;(add-to-list 'auto-mode-alist '("\\.erb" . eruby-nxhtml-mumamo-mode))
-;(setq mumamo-background-colors nil)  
-;(eval-after-load "bytecomp"
-;                 '(add-to-list 'byte-compile-not-obsolete-vars
-;                               'font-lock-beginning-of-syntax-function))
-;(eval-after-load "bytecomp"
-;                 '(add-to-list 'byte-compile-not-obsolete-vars
-;                               'font-lock-syntactic-keywords))
-
 ;; rhtml mode
 (add-to-list 'load-path "~/.emacs.d/elpa/rhtml")
 (require 'rhtml-mode)
@@ -408,6 +408,19 @@
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 (add-to-list 'auto-mode-alist '("\\.ejs$" . rhtml-mode))
+
+;; python-mode 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/python")
+(require 'python-mode)
+;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(setq py-load-pymacs-p t)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/anything")
+(require 'anything)
+(require 'anything-ipython)
+(when (require 'anything-show-completion nil t)
+ (use-anything-show-completion 'anything-ipython-complete
+  								'(length initial-pattern)))
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list
@@ -427,6 +440,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -440,6 +454,7 @@
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
  '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
