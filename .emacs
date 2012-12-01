@@ -288,7 +288,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
 (require 'pycomplete)
 
-(require 'ipython)
+;(require 'ipython)
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
