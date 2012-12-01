@@ -190,8 +190,9 @@
 ;;
 ;;
 ;;
-;; F12
-;;
+;; F12 : 定义在cpp文件和.h文件中切换的函数
+(require 'eassist nil 'noerror)
+(global-set-key [f12] 'eassist-switch-h-cpp)
 ;;
 ;;
 ;;
