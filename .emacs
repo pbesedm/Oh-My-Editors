@@ -295,7 +295,6 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/ac-dict")
 (ac-config-default)
-(ac-stop)
 (global-auto-complete-mode t)
 (setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
 (set-face-background 'ac-candidate-face "lightgray")
