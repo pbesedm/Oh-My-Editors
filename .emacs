@@ -123,6 +123,9 @@
 ;; 关闭当前 buffer
 (global-set-key "\C-ck" 'kill-this-buffer)
 
+;; 回车后自动缩进
+(global-set-key (kbd "RET") 'newline-and-indent)
+
 ;; F2 ：撤销
 (global-set-key [f2] 'undo)
 ;;
