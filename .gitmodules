@@ -162,7 +162,3 @@
 	path = .emacs.d/elpa/python
 	url = git://github.com/emacsmirror/python-mode.git
 	ignore = dirty
-[submodule ""]
-	path = .emacs.d/elpa/emacs-clang-complete-async
-	url = git://github.com/Golevka/emacs-clang-complete-async.git
-	ignore = dirty
