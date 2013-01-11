@@ -201,13 +201,6 @@
 ;;
 ;;
 
-;; ampc
-;; Asynchronous Music Player Controller
-;; 可以运行，但服务器和端口错误，不知道原因，断网中……
-;(add-to-list 'load-path "~/.emacs.d/elpa/ampc-0.1.3")
-;(autoload 'ampc "ampc" nil t)
-;(global-set-key (kbd "<f9>") (lambda () (interactive) (ampc "localhost" "6600")))
-
 ;; undo-tree
 ;; Treat undo history as a tree
 (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.5.2")
@@ -383,6 +376,8 @@
             (semantic-add-system-include dir 'c-mode))
           include-dirs))
 
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
 (setq qt4-base-dir "/usr/include/Qt/")
 (semantic-add-system-include qt4-base-dir 'c++-mode)
 (add-to-list 'auto-mode-alist (cons qt4-base-dir 'c++-mode))
@@ -466,6 +461,8 @@
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode nil)
  '(menu-bar-mode nil)
+ '(py-start-run-ipython-shell nil)
+ '(py-start-run-py-shell nil)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
