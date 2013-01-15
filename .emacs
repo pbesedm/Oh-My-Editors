@@ -201,6 +201,11 @@
 ;;
 ;;
 
+;; hungry-delete minor mode
+(add-to-list 'load-path "~/.emacs.d/elpa/hungry-delete")
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
 ;; undo-tree
 ;; Treat undo history as a tree
 (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.5.2")
@@ -289,6 +294,10 @@
 (autoload 'pymacs-load "pymacs" nil t)
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
+
+;; ipython 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/anything")
+(require 'ipython)
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
@@ -463,6 +472,7 @@
  '(global-hl-line-sticky-flag t)
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
+ '(ipython-command "/usr/bin/ipython")
  '(js2-auto-indent-p t)
  '(js2-auto-insert-catch-block t)
  '(js2-bounce-indent-p nil)
@@ -473,12 +483,13 @@
  '(js2-mirror-mode nil)
  '(menu-bar-mode nil)
  '(py-load-pymacs-p nil)
+ '(py-shell-name "/usr/bin/ipython2")
  '(py-start-run-ipython-shell nil)
  '(py-start-run-py-shell nil)
- '(ropemacs-autoimport-modules t)
+ '(ropemacs-autoimport-modules (quote ("os" "sys" "shutil" "PyQt4")))
  '(ropemacs-enable-shortcuts nil)
  '(ropemacs-local-prefix "C-c C-p")
- '(ropemacs-mode t)
+ '(ropemacs-mode t t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
