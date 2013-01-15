@@ -72,6 +72,7 @@
 ;; 设置 tab 为 4 个空格的宽度
 (setq default-tab-width 4)
 (setq c-basic-offset 4)
+(setq c-hungry-delete-key t)
 
 ;; 使用 24 小时制
 (setq display-time-24hr-format t)
@@ -465,6 +466,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
  '(font-use-system-font t)
  '(global-ede-mode t)
