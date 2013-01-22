@@ -493,6 +493,7 @@
  '(ropemacs-local-prefix "C-c C-p")
  '(ropemacs-mode t t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
+ '(save-abbrevs (quote silently))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
