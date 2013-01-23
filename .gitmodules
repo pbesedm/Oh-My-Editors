@@ -166,3 +166,7 @@
 	path = .emacs.d/elpa/emacs-clang-complete-async
 	url = git://github.com/Golevka/emacs-clang-complete-async.git
 	ignore = dirty
+[submodule ".emacs.d/elpa/hungry-delete"]
+	path = .emacs.d/elpa/hungry-delete
+	url = git://github.com/nflath/hungry-delete.git
+	ignore = dirty
