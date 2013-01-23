@@ -4,12 +4,9 @@ Oh-My-Editors
 与编辑器相关的资料，包括配置文件和相关文档
 
 python 的相关配置：
-
-1. 下载 Rope 和 Ropemacs（尚未配置），安装 Ropemacs 前，必须先安装 rope 和 pymacs
-2. rope 安装方法：python setup.py install （可能需要 root 权限）
-3. pymacs 安装方法：python setup.py install （可能需要 root 权限）
-4. 将 pymacs.el 拷贝到 ~/.emacs.d/elpa/python/completion/
-5. 拷贝 pycomplete.py 到 PYTHONPATH （比如：/usr/lib/python3.3/site-packages/）
+1. 请参阅 My Emacs Python environment.pdf
+2. 经测试，Pymacs 只适合用 Python2 环境，在 Python3 中有不少错误，如果不嫌烦，可以手动修改
+3. 文档中用的是 0.24beta 版本，我安装测试的也是这个版本，用 0.25 一片错误
 
 使用clang实现 C/C++ 智能补全的配置：
 1. 安装 clang 和 llvm

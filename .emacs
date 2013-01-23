@@ -72,6 +72,7 @@
 ;; 设置 tab 为 4 个空格的宽度
 (setq default-tab-width 4)
 (setq c-basic-offset 4)
+(setq c-hungry-delete-key t)
 
 ;; 使用 24 小时制
 (setq display-time-24hr-format t)
@@ -201,6 +202,11 @@
 ;;
 ;;
 
+;; hungry-delete minor mode
+(add-to-list 'load-path "~/.emacs.d/elpa/hungry-delete")
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
 ;; undo-tree
 ;; Treat undo history as a tree
 (add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-0.5.2")
@@ -267,14 +273,8 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-20120720")
 (require 'popup)
 
-;; pymacs 配置
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-
 ;; python-mode 配置
+(setq py-shell-name "/usr/bin/python2")
 (add-to-list 'load-path "~/.emacs.d/elpa/python")
 (setq py-install-directory "~/.emacs.d/elpa/python")
 (require 'python-mode)
@@ -282,10 +282,23 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (setq py-load-pymacs-p t)
-(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
-(require 'pycomplete)
+;(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
+;(require 'pycomplete)
 
-;(require 'ipython)
+;; pymacs 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/pymacs-0.24-beta2")
+(require 'pymacs)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+;; ipython 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/anything")
+(require 'ipython)
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
@@ -320,6 +333,27 @@
 )
 
 (my-ac-config)
+
+(defmacro after (mode &rest body)
+  `(eval-after-load ,mode
+     '(progn ,@body)))
+
+(after 'auto-complete
+       (setq ac-use-menu-map t))
+
+(after 'auto-complete-config
+       (ac-config-default)
+       (when (file-exists-p (expand-file-name "~/.emacs.d/elpa/pymacs-0.24-beta2"))
+         (ac-ropemacs-initialize)
+         (ac-ropemacs-setup)))
+
+(after 'auto-complete-autoloads
+       (autoload 'auto-complete-mode "auto-complete" "enable auto-complete-mode" t nil)
+       (add-hook 'python-mode-hook
+                 (lambda ()
+                   (require 'auto-complete-config)
+                   (add-to-list 'ac-sources 'ac-source-ropemacs)
+                   (auto-complete-mode))))
 
 ;; Rainbow-mode for edit css-like Files
 (add-to-list 'load-path "~/.emacs.d/elpa/rainbow-mode-0.2")
@@ -408,19 +442,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.ejs$" . rhtml-mode))
 
-;; python-mode 配置
-(add-to-list 'load-path "~/.emacs.d/elpa/python")
-(require 'python-mode)
-;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(setq py-load-pymacs-p t)
-
-(add-to-list 'load-path "~/.emacs.d/elpa/anything")
-(require 'anything)
-(require 'anything-ipython)
-(when (require 'anything-show-completion nil t)
- (use-anything-show-completion 'anything-ipython-complete
-  								'(length initial-pattern)))
-
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev                 ; 搜索当前 buffer
@@ -445,6 +466,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
  '(font-use-system-font t)
  '(global-ede-mode t)
@@ -452,6 +474,7 @@
  '(global-hl-line-sticky-flag t)
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
+ '(ipython-command "/usr/bin/ipython")
  '(js2-auto-indent-p t)
  '(js2-auto-insert-catch-block t)
  '(js2-bounce-indent-p nil)
@@ -461,9 +484,16 @@
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode nil)
  '(menu-bar-mode nil)
+ '(py-load-pymacs-p nil)
+ '(py-shell-name "/usr/bin/ipython2")
  '(py-start-run-ipython-shell nil)
  '(py-start-run-py-shell nil)
+ '(ropemacs-autoimport-modules (quote ("os" "sys" "shutil" "PyQt4")))
+ '(ropemacs-enable-shortcuts nil)
+ '(ropemacs-local-prefix "C-c C-p")
+ '(ropemacs-mode t t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
+ '(save-abbrevs (quote silently))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
  '(show-paren-mode t)
