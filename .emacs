@@ -203,9 +203,9 @@
 ;;
 
 ;; hungry-delete minor mode
-(add-to-list 'load-path "~/.emacs.d/elpa/hungry-delete")
-(require 'hungry-delete)
-(global-hungry-delete-mode)
+;(add-to-list 'load-path "~/.emacs.d/elpa/hungry-delete")
+;(require 'hungry-delete)
+;(global-hungry-delete-mode)
 
 ;; undo-tree
 ;; Treat undo history as a tree
