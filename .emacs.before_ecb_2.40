@@ -472,7 +472,6 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
- '(ecb-options-version "2.40")
  '(font-use-system-font t)
  '(global-ede-mode t)
  '(global-hl-line-mode t)
