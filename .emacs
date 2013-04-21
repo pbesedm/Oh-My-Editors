@@ -465,6 +465,25 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/ecb-20130202.1459/")
 (require 'ecb)
 
+(add-to-list 'load-path "~/.emacs.d/elpa/")
+(require 'auto-header)
+(setq header-full-name "Dianchun Huang")
+(setq header-email-address "simpleotter23@gmail.com")
+(setq header-copyright-notice "
+Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
+")
+(setq header-update-on-save
+      '(filename
+         modified))
+(setq header-field-list
+      '(filename
+         version
+         author
+         copyright
+         created
+         modified
+         description))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
