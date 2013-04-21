@@ -283,24 +283,24 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(setq py-load-pymacs-p t)
+;(setq py-load-pymacs-p t)
 ;(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
 ;(require 'pycomplete)
 
 ;; pymacs 配置
-(add-to-list 'load-path "~/.emacs.d/elpa/pymacs-0.24-beta2")
-(require 'pymacs)
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;(add-to-list 'load-path "~/.emacs.d/elpa/pymacs-0.24-beta2")
+;(require 'pymacs)
+;(autoload 'pymacs-apply "pymacs")
+;(autoload 'pymacs-call "pymacs")
+;(autoload 'pymacs-eval "pymacs" nil t)
+;(autoload 'pymacs-exec "pymacs" nil t)
+;(autoload 'pymacs-load "pymacs" nil t)
+;(pymacs-load "ropemacs" "rope-")
+;(setq ropemacs-enable-autoimport t)
 
 ;; ipython 配置
-(add-to-list 'load-path "~/.emacs.d/elpa/anything")
-(require 'ipython)
+;(add-to-list 'load-path "~/.emacs.d/elpa/anything")
+;(require 'ipython)
 
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
@@ -343,11 +343,11 @@
 (after 'auto-complete
        (setq ac-use-menu-map t))
 
-(after 'auto-complete-config
-       (ac-config-default)
-       (when (file-exists-p (expand-file-name "~/.emacs.d/elpa/pymacs-0.24-beta2"))
-         (ac-ropemacs-initialize)
-         (ac-ropemacs-setup)))
+;(after 'auto-complete-config
+;       (ac-config-default)
+;       (when (file-exists-p (expand-file-name "~/.emacs.d/elpa/pymacs-0.24-beta2"))
+;         (ac-ropemacs-initialize)
+;         (ac-ropemacs-setup)))
 
 (after 'auto-complete-autoloads
        (autoload 'auto-complete-mode "auto-complete" "enable auto-complete-mode" t nil)
@@ -489,7 +489,6 @@
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode nil)
  '(menu-bar-mode nil)
- '(py-load-pymacs-p nil)
  '(py-shell-name "/usr/bin/ipython2")
  '(py-start-run-ipython-shell nil)
  '(py-start-run-py-shell nil)
