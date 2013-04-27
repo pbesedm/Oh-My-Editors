@@ -544,8 +544,8 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
         )
 ))
 
-;(setq mew-use-cached-passwd t)
-(setq mew-use-master-passwd t)
+(setq mew-use-cached-passwd t)
+;(setq mew-use-master-passwd t)
 (setq mew-charset-m17n "utf-8")
 (setq mew-internal-utf-8p t)
 
