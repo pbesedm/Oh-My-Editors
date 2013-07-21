@@ -326,7 +326,7 @@
  (setq ac-clang-complete-executable "~/.emacs.d/elpa/emacs-clang-complete-async/clang-complete")
  (setq ac-sources '(ac-source-clang-async))
  (ac-clang-launch-completion-process)
- )
+)
 
 (defun my-ac-config ()
  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
@@ -335,7 +335,7 @@
 )
 
 (my-ac-config)
-
+ 
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
      '(progn ,@body)))
@@ -473,25 +473,99 @@
 Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
 ")
 (setq header-update-on-save
-      '(filename
-         modified))
+      '(filename)
+)
 (setq header-field-list
       '(filename
          version
          author
          copyright
          created
-         modified
          description))
+
+;; mew 配置，用于发送和接收邮件
+(setq load-path
+    (append '("/usr/local/share/emacs/site-lisp/mew")
+    load-path))
+(autoload 'mew "mew" nil t)
+(autoload 'mew-send "mew" nil t)
+
+;; 可选步骤
+(if (boundp 'read-mail-command)
+  (setq read-mail-command 'mew))
+
+;; 可选步骤
+(autoload 'mew-user-agent-compose "mew" nil t)
+(if (boundp 'mail-user-agent)
+    (setq mail-user-agent 'mew-user-agent))
+(if (fboundp 'define-mail-user-agent)
+    (define-mail-user-agent
+      'mew-user-agent
+      'mew-user-agent-compose
+      'mew-draft-send-message
+      'mew-draft-kill
+      'mew-send-hook))
+
+;; 不删除服务器上的邮件
+(setq mew-pop-delete nil)
+
+(setq mew-config-alist
+    '(("default"
+     ("name"         .  "Dianchun Huang")
+     ("user"         .  "pbe_sedm")
+     ("smtp-server"  .  "smtp.126.com")
+     ("smtp-port"    .  "25")
+     ("pop-server"   .  "pop.126.com")
+     ("pop-port"     .  "110")
+     ("smtp-user"    .  "pbe_sedm")
+     ("pop-user"     .  "pbe_sedm")
+     ("mail-domain"  .  "126.com")
+     ("mailbox-type" .  pop)
+     ("pop-auth"     .  pass)
+     ("smtp-auth-list" . ("PLAIN" "LOGIN" "CRAM-MD5"))
+     )
+     ("gmail"
+        ("name"         . "Dianchun Huang")
+        ("user"         . "simpleotter23")
+        ("mail-domain"  . "gmail.com")
+        ("proto"        . "+")
+        ("pop-ssl"      . t)
+        ("pop-ssl-port" . "995")
+;       ("prog-ssl"     . "/usr/sbin/stunnel")
+        ("pop-auth"     . pass)
+        ("pop-user"     . "simpleotter23@gmail.com")
+        ("pop-server"   . "pop.gmail.com")
+        ("smtp-ssl"     . t)
+        ("smtp-ssl-port". "465")
+        ("smtp-auth-list" . ("PLAIN" "LOGIN" "CRAM-MD5"))
+        ("smtp-user"    . "simpleotter23@gmail.com")
+        ("smtp-server"  . "smtp.gmail.com")
+        )
+))
+
+(setq mew-use-cached-passwd t)
+;(setq mew-use-master-passwd t)
+(setq mew-charset-m17n "utf-8")
+(setq mew-internal-utf-8p t)
+
+(setq mew-signature-file "~/Mail/signature")
+(setq mew-signature-as-lastpart t)
+(setq mew-signature-insert-last t)
+(add-hook 'mew-before-cite-hook 'mew-header-goto-body)
+(add-hook 'mew-draft-mode-newdraft-hook 'mew-draft-insert-signature)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(adaptive-fill-mode t)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
  '(ecb-options-version "2.40")
+ '(fill-column 79)
+ '(fill-nobreak-invisible nil)
+ '(fill-nobreak-predicate (quote (fill-french-nobreak-p)))
  '(font-use-system-font t)
  '(global-ede-mode t)
  '(global-hl-line-mode t)
@@ -507,7 +581,11 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  '(js2-enter-indents-newline t)
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode nil)
+ '(mail-host-address "Dianchun Huang")
  '(menu-bar-mode nil)
+ '(pop3-leave-mail-on-server t)
+ '(pop3-mailhost "pop3.126.com")
+ '(pop3-password-required t)
  '(py-shell-name "/usr/bin/ipython2")
  '(py-start-run-ipython-shell nil)
  '(py-start-run-py-shell nil)
@@ -519,8 +597,14 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  '(save-abbrevs (quote silently))
  '(scroll-bar-mode nil)
  '(semantic-mode t)
+ '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(smtpmail-smtp-server "smtp.126.com")
+ '(smtpmail-smtp-service 25)
+ '(smtpmail-smtp-user "pbe_sedm")
+ '(tool-bar-mode nil)
+ '(user-full-name "Dianchun Huang")
+ '(user-mail-address "pbe_sedm@126.com"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
