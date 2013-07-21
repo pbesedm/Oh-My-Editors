@@ -326,7 +326,7 @@
  (setq ac-clang-complete-executable "~/.emacs.d/elpa/emacs-clang-complete-async/clang-complete")
  (setq ac-sources '(ac-source-clang-async))
  (ac-clang-launch-completion-process)
- )
+)
 
 (defun my-ac-config ()
  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
@@ -335,7 +335,7 @@
 )
 
 (my-ac-config)
-
+ 
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
      '(progn ,@body)))
@@ -473,15 +473,14 @@
 Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
 ")
 (setq header-update-on-save
-      '(filename
-         modified))
+      '(filename)
+)
 (setq header-field-list
       '(filename
          version
          author
          copyright
          created
-         modified
          description))
 
 ;; mew 配置，用于发送和接收邮件
@@ -560,9 +559,13 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(adaptive-fill-mode t)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (wombat)))
  '(ecb-options-version "2.40")
+ '(fill-column 79)
+ '(fill-nobreak-invisible nil)
+ '(fill-nobreak-predicate (quote (fill-french-nobreak-p)))
  '(font-use-system-font t)
  '(global-ede-mode t)
  '(global-hl-line-mode t)
