@@ -2,7 +2,7 @@
 ;;;
 ;;;     文件名: .eamcs
 ;;;       作者: Dianchun Huang
-;;;   版本管理：Git    
+;;;   版本管理：Git
 ;;;     创建于: 2012 年 7 月 21 日
 ;;; 第一次更新: 2012 年 7 月 21 日 修改者：Dianchun Huang
 ;;;       描述：
@@ -120,6 +120,10 @@
 ;; ido-mode
 (require 'ido)
 (ido-mode t)
+
+;; indent-guide
+(add-to-list 'load-path "~/.emacs.d/elpa/indent-guide-20130625.7")
+(require 'indent-guide)
 
 ;; 关闭当前 buffer
 (global-set-key "\C-ck" 'kill-this-buffer)
@@ -572,6 +576,8 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  '(global-hl-line-sticky-flag t)
  '(guru-mode nil)
  '(hl-line-sticky-flag t)
+ '(indent-guide-char "¦")
+ '(indent-guide-global-mode t)
  '(ipython-command "/usr/bin/ipython")
  '(js2-auto-indent-p t)
  '(js2-auto-insert-catch-block t)
