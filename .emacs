@@ -279,33 +279,6 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/popup-20120720")
 (require 'popup)
 
-;; python-mode 配置
-(setq py-shell-name "/usr/bin/python2")
-(add-to-list 'load-path "~/.emacs.d/elpa/python")
-(setq py-install-directory "~/.emacs.d/elpa/python")
-(require 'python-mode)
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-;(setq py-load-pymacs-p t)
-;(add-to-list 'load-path "~/.emacs.d/elpa/python/completion")
-;(require 'pycomplete)
-
-;; pymacs 配置
-;(add-to-list 'load-path "~/.emacs.d/elpa/pymacs-0.24-beta2")
-;(require 'pymacs)
-;(autoload 'pymacs-apply "pymacs")
-;(autoload 'pymacs-call "pymacs")
-;(autoload 'pymacs-eval "pymacs" nil t)
-;(autoload 'pymacs-exec "pymacs" nil t)
-;(autoload 'pymacs-load "pymacs" nil t)
-;(pymacs-load "ropemacs" "rope-")
-;(setq ropemacs-enable-autoimport t)
-
-;; ipython 配置
-;(add-to-list 'load-path "~/.emacs.d/elpa/anything")
-;(require 'ipython)
-
 ;; auto-complete
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete")
 (require 'auto-complete-config)
@@ -339,27 +312,13 @@
 )
 
 (my-ac-config)
- 
+
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
      '(progn ,@body)))
 
 (after 'auto-complete
        (setq ac-use-menu-map t))
-
-;(after 'auto-complete-config
-;       (ac-config-default)
-;       (when (file-exists-p (expand-file-name "~/.emacs.d/elpa/pymacs-0.24-beta2"))
-;         (ac-ropemacs-initialize)
-;         (ac-ropemacs-setup)))
-
-(after 'auto-complete-autoloads
-       (autoload 'auto-complete-mode "auto-complete" "enable auto-complete-mode" t nil)
-       (add-hook 'python-mode-hook
-                 (lambda ()
-                   (require 'auto-complete-config)
-                   (add-to-list 'ac-sources 'ac-source-ropemacs)
-                   (auto-complete-mode))))
 
 ;; Rainbow-mode for edit css-like Files
 (add-to-list 'load-path "~/.emacs.d/elpa/rainbow-mode-0.2")
@@ -389,12 +348,14 @@
                 "../.." "../../include" "../../inc" "../../common" "../../public"))
 (defconst cedet-include-dirs
             (list "/usr/include"
-                  "/usr/include/c++/4.7.1"
-                  "/usr/include/c++/4.7.1/bits/"
-                  "/usr/include/c++/4.7.1/tr1"
-                  "/usr/include/c++/4.7.1/backward"
-                  "/usr/include/c++/4.7.1/algorithm"
-                  "/usr/include/c++/4.6.3/x86_64-linux-gnu/bits"
+				  "/usr/local/include"
+				  "/usr/include/x86_64-linux-gnu/c++/4.7/bits"
+                  "/usr/include/c++/4.7"
+                  "/usr/include/c++/4.7/bits"
+                  "/usr/include/c++/4.7/tr1"
+                  "/usr/include/c++/4.7/tr2"
+                  "/usr/include/c++/4.7/backward"
+                  "/usr/include/x86_64-linux-gnu"
                   "/usr/include/Qt"
                   "/usr/include/QtCore"
                   "/usr/include/QtGui"
@@ -578,7 +539,6 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  '(hl-line-sticky-flag t)
  '(indent-guide-char "¦")
  '(indent-guide-global-mode t)
- '(ipython-command "/usr/bin/ipython")
  '(js2-auto-indent-p t)
  '(js2-auto-insert-catch-block t)
  '(js2-bounce-indent-p nil)
@@ -592,13 +552,6 @@ Copyright (c) 2013 Dianchun Huang (simpleotter23@gmail.com)
  '(pop3-leave-mail-on-server t)
  '(pop3-mailhost "pop3.126.com")
  '(pop3-password-required t)
- '(py-shell-name "/usr/bin/ipython2")
- '(py-start-run-ipython-shell nil)
- '(py-start-run-py-shell nil)
- '(ropemacs-autoimport-modules (quote ("os" "sys" "shutil" "PyQt4")))
- '(ropemacs-enable-shortcuts nil)
- '(ropemacs-local-prefix "C-c C-p")
- '(ropemacs-mode t t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(save-abbrevs (quote silently))
  '(scroll-bar-mode nil)

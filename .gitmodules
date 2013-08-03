@@ -170,3 +170,6 @@
 	path = .emacs.d/elpa/hungry-delete
 	url = git://github.com/nflath/hungry-delete.git
 	ignore = dirty
+[submodule ".emacs.d/elpa/el-get"]
+	path = .emacs.d/elpa/el-get
+	url = https://github.com/dimitri/el-get.git
