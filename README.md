@@ -4,11 +4,11 @@ Oh-My-Editors
 安装方法：
 ---------
 
-1. git submodule init  
-2. git submodule update  
-3. 使 Emacs 的配置生效，运行下列命令：  
-   ln -s Oh-My-Editors/.emacs.d ~  
-   ln -s Oh-My-Editors/.emacs ~  
+1. `git submodule init`  
+- `git submodule update`  
+- 使 Emacs 的配置生效，运行下列命令：  
+   `ln -s Oh-My-Editors/.emacs.d ~`  
+   `ln -s Oh-My-Editors/.emacs ~`  
 
 关于自动生成文件头：
 --------------------
@@ -42,3 +42,11 @@ Python 的相关配置：
 1. 在 Ubuntu 下安装了 Emacs24 为什么 clang-complete 不工作？
 
 建议下载源码编译安装，这个问题会得到解决。
+
+2. 重新安装系统后，cedet 加载有问题，该如何解决？
+
+- `sudo apt-get install texinfo`
+- `cd ~/.emacs.d/elpa/cedet-1.1`
+- `find -name Makefile -exec touch {} \;`
+- `make clean-all`
+- `make bootstrap`
