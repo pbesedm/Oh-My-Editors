@@ -43,7 +43,7 @@ Python 的相关配置：
 
 建议下载源码编译安装，这个问题会得到解决。
 
-- 重新安装系统后，cedet 加载有问题，该如何解决？
+2. 重新安装系统后，cedet 加载有问题，该如何解决？
 
 - `sudo apt-get install texinfo`
 - `cd ~/.emacs.d/elpa/cedet-1.1`
