@@ -35,6 +35,8 @@ Python 的相关配置：
 1. 安装 clang 和 llvm  
 -  进入 ~/.emacs.d/elpa/emacs-clang-complete-async 并执行 make 命令，生成
    clang-complete 可执行文件
+-  编译和任何其他问题请参考
+[emacs-clang-complete-async 项目主页](https://github.com/Golevka/emacs-clang-complete-async)
 
 问题：
 ------
