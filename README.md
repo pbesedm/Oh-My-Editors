@@ -40,16 +40,14 @@ Python 的相关配置：
 ------
 
 1. 在 Ubuntu 下安装了 Emacs24 为什么 clang-complete 不工作？
+	- 建议下载 Emacs24 源码编译安装，这个问题会得到解决。
 
-- 建议下载 Emacs24 源码编译安装，这个问题会得到解决。
-
-2. 重新安装系统后，cedet 加载有问题，该如何解决？
-
-- `sudo apt-get install texinfo`
-- `cd ~/.emacs.d/elpa/cedet-1.1`
-- `find -name Makefile -exec touch {} \;`
-- `make clean-all`
-- `make bootstrap`
+-  重新安装系统后，cedet 加载有问题，该如何解决？
+	- `sudo apt-get install texinfo`
+	- `cd ~/.emacs.d/elpa/cedet-1.1`
+	- `find -name Makefile -exec touch {} \;`
+	- `make clean-all`
+	- `make bootstrap`
 
 推荐使用的软件：
 ----------------
