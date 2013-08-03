@@ -35,3 +35,10 @@ Python 的相关配置：
 1. 安装 clang 和 llvm  
 2. 进入 ~/.emacs.d/elpa/emacs-clang-complete-async 并执行 make 命令，生成
    clang-complete 可执行文件
+
+问题：
+------
+
+1. 在 Ubuntu 下安装了 Emacs24 为什么 clang-complete 不工作？
+
+建议下载源码编译安装，这个问题会得到解决。
