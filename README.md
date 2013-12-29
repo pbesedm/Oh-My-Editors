@@ -37,7 +37,7 @@ comment-end 是 \*/，但在我这里是 // 和 空串，生成的结果很不�
 1. M-x list-packages，安装 jedi，这种方式方便之处在于系统会将
    concurrent、ctable、deferred、epc等jedi依赖的库一并安装。
 - 进入 jedi 目录
-	- 执行`pip install -r requirements.txt`
+	- 执行`sudo pip install -r requirements.txt`
 	- 执行 `sudo python setup.py install`
 - 配置（.emacs）
 - 详细安装步骤可参考：
