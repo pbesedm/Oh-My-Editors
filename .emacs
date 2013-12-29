@@ -241,6 +241,8 @@
   (iimage-mode)
   )
 
+(setq org-startup-indented t)
+
 ;; rinari minor mode for rails
 (setq rinari-tags-file "TAGS")
 
@@ -305,11 +307,28 @@
  (ac-clang-launch-completion-process)
 )
 
+
 (defun my-ac-config ()
+ (setq ac-clang-flags (split-string "-I/usr/include \
+					   -I/usr/local/include \
+					   -I/usr/include/x86_64-linux-gnu/c++/4.7/bits \
+					   -I/usr/include/c++/4.7 \
+					   -I/usr/include/c++/4.7/bits \
+					   -I/usr/include/c++/4.7/tr1 \
+					   -I/usr/include/c++/4.7/tr2 \
+					   -I/usr/include/c++/4.7/backward \
+					   -I/usr/include/x86_64-linux-gnu \
+					   -I/opt/Qt5.1.0/5.1.0/gcc_64/include/QtCore \
+					   -I/opt/Qt5.1.0/5.1.0/gcc_64/include/QtGui \
+					   -I/opt/Qt5.1.0/5.1.0/gcc_64/include/QtWidgets \
+					   -I/opt/Qt5.1.0/5.1.0/gcc_64/include/QtNetwork"))
+ (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
- (global-auto-complete-mode t)
-)
+ (global-auto-complete-mode t))
+(defun my-ac-cc-mode-setup ()
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
+(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 
 (my-ac-config)
 
@@ -319,6 +338,9 @@
 
 (after 'auto-complete
        (setq ac-use-menu-map t))
+
+;(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-clang-20120612")
+;(require 'auto-complete-clang)
 
 ;; Rainbow-mode for edit css-like Files
 (add-to-list 'load-path "~/.emacs.d/elpa/rainbow-mode-0.2")
@@ -356,15 +378,11 @@
                   "/usr/include/c++/4.7/tr2"
                   "/usr/include/c++/4.7/backward"
                   "/usr/include/x86_64-linux-gnu"
-                  "/usr/include/Qt"
-                  "/usr/include/QtCore"
-                  "/usr/include/QtGui"
-                  "/usr/include/QtNetwork"
-                  "/usr/include/QtSql"
-                  "/usr/include/QtWebKit"
-                  "/usr/include/QtOpenGL"
-                  "/usr/include/QtXml"
-                  "/usr/include/QtXmlPatterns"))
+                  "/opt/Qt5.1.0/5.1.0/gcc_64/include/QtCore"
+                  "/opt/Qt5.1.0/5.1.0/gcc_64/include/QtGui"
+                  "/opt/Qt5.1.0/5.1.0/gcc_64/include/QtWidgets"
+                  "/opt/Qt5.1.0/5.1.0/gcc_64/include/QtNetwork"
+                  "/opt/Qt5.1.0/5.1.0/gcc_64/include"))
 
 (semantic-load-enable-gaudy-code-helpers)
 (setq include-dirs cedet-user-include-dirs)
@@ -379,7 +397,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
 
-(setq qt4-base-dir "/usr/include/Qt/")
+(setq qt4-base-dir "/opt/Qt5.1.0/5.1.0/gcc_64/include/QtCore/")
 (semantic-add-system-include qt4-base-dir 'c++-mode)
 (add-to-list 'auto-mode-alist (cons qt4-base-dir 'c++-mode))
 (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "qconfig.h"))
