@@ -22,13 +22,6 @@ comment-end 是 \*/，但在我这里是 // 和 空串，生成的结果很不�
 - C-x C-h c  header-update-count        增加更新计数器  
 - C-x C-h f  header-make-fnheader       插入函数头  
 
-Python 的相关配置：
--------------------
-
-1. 请参阅 My Emacs Python environment.pdf  
--  经测试，Pymacs 只适合用 Python2 环境，在 Python3 中有不少错误，如果不嫌烦，可以手动修改  
--  文档中用的是 0.24beta 版本，我安装测试的也是这个版本，用 0.25 一片错误  
-
 使用clang实现 C/C++ 智能补全的配置：
 ------------------------------------
 
@@ -48,10 +41,8 @@ Python 的相关配置：
 	- 执行 `sudo python setup.py install`
 - 配置（.emacs）
 - 详细安装步骤可参考：
-	-[Emacs Plugins for
-Python](http://blog.sina.com.cn/s/blog_3f43d87c0101ctuv.html)）
-	-[Jedi.el - Python auto-completion for
-	Emacs](http://tkf.github.io/emacs-jedi/released/)
+	-[Emacs Plugins for Python](http://blog.sina.com.cn/s/blog_3f43d87c0101ctuv.html)）
+	-[Jedi.el - Python auto-completion for Emacs](http://tkf.github.io/emacs-jedi/released/)
 
 问题：
 ------
