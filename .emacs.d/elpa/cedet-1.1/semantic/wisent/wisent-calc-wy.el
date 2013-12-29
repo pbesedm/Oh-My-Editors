@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002, 2003, 2009 David Ponce
 
-;; Author: hdc <hdc@hdc-T3400>
-;; Created: 2012-06-11 17:06:14+0800
+;; Author: hdc <hdc@hdc-X220>
+;; Created: 2013-08-03 19:18:59+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

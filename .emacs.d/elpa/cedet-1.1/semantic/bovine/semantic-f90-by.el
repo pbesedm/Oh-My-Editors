@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2010 Free Software Foundation
 
-;; Author: hdc <hdc@hdc-T3400>
-;; Created: 2012-06-11 17:06:28+0800
+;; Author: hdc <hdc@hdc-X220>
+;; Created: 2013-08-03 19:19:06+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012 Eric M. Ludlam
 
-;; Author: hdc <hdc@hdc-T3400>
-;; Created: 2012-06-11 17:06:26+0800
+;; Author: hdc <hdc@hdc-X220>
+;; Created: 2013-08-03 19:19:05+0800
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
