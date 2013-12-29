@@ -41,8 +41,8 @@ comment-end 是 \*/，但在我这里是 // 和 空串，生成的结果很不�
 	- 执行 `sudo python setup.py install`
 - 配置（.emacs）
 - 详细安装步骤可参考：
-	-[Emacs Plugins for Python](http://blog.sina.com.cn/s/blog_3f43d87c0101ctuv.html)）
-	-[Jedi.el - Python auto-completion for Emacs](http://tkf.github.io/emacs-jedi/released/)
+	- [Emacs Plugins for Python](http://blog.sina.com.cn/s/blog_3f43d87c0101ctuv.html)）
+	- [Jedi.el - Python auto-completion for Emacs](http://tkf.github.io/emacs-jedi/released/)
 
 问题：
 ------
