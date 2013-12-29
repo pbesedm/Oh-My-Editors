@@ -21,3 +21,6 @@
 [submodule ".emacs.d/elpa/el-get"]
 	path = .emacs.d/elpa/el-get
 	url = https://github.com/dimitri/el-get.git
+[submodule ".emacs.d/elpa/emacs-jedi"]
+	path = .emacs.d/elpa/emacs-jedi
+	url = https://github.com/tkf/emacs-jedi.git

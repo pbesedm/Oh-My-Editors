@@ -427,6 +427,22 @@
 
 (add-to-list 'auto-mode-alist '("\\.ejs$" . rhtml-mode))
 
+;; jedi 配置
+(add-to-list 'load-path "~/.emacs.d/elpa/ctable-20131202.2114")
+(require 'ctable)
+(add-to-list 'load-path "~/.emacs.d/elpa/deferred-20120306")
+(require 'deferred)
+(add-to-list 'load-path "~/.emacs.d/elpa/concurrent-20130914.536")
+(require 'concurrent)
+(add-to-list 'load-path "~/.emacs.d/elpa/epc-20130803.2228")
+(require 'epc)
+(add-to-list 'load-path "~/.emacs.d/elpa/emacs-jedi")
+(require 'jedi)
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)			; optional
+(setq jedi:complete-on-dot t)		; optional
+
 (global-set-key (kbd "M-/") 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev                 ; 搜索当前 buffer

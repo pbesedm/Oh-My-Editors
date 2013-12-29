@@ -38,6 +38,21 @@ Python 的相关配置：
 -  编译和任何其他问题请参考
 [emacs-clang-complete-async 项目主页](https://github.com/Golevka/emacs-clang-complete-async)
 
+使用 jedi 实现 python 补全：
+--------------------------
+
+1. M-x list-packages，安装 jedi，这种方式方便之处在于系统会将
+   concurrent、ctable、deferred、epc等jedi依赖的库一并安装。
+- 进入 jedi 目录
+	- 执行`pip install -r requirements.txt`
+	- 执行 `sudo python setup.py install`
+- 配置（.emacs）
+- 详细安装步骤可参考：
+	-[Emacs Plugins for
+Python](http://blog.sina.com.cn/s/blog_3f43d87c0101ctuv.html)）
+	-[Jedi.el - Python auto-completion for
+	Emacs](http://tkf.github.io/emacs-jedi/released/)
+
 问题：
 ------
 
