@@ -20,3 +20,6 @@
 [submodule ".emacs.d/elpa/emacs-jedi"]
 	path = .emacs.d/elpa/emacs-jedi
 	url = https://github.com/tkf/emacs-jedi.git
+[submodule ".emacs.d/elpa/yasnippet"]
+	path = .emacs.d/elpa/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git

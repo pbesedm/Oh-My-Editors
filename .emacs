@@ -270,9 +270,9 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet")
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/elpa/yasnippet/snippets"
-                           "~/.emacs.d/elpa/yasnippet/extras/imported"))
-(yas/global-mode 1)
-(yas/reload-all)
+                           "~/.emacs.d/elpa/yasnippet/yasmate/snippets"))
+(yas-global-mode 1)
+(yas-reload-all)
 (add-hook 'prog-mode-hook
           '(lambda ()
              (yas/minor-mode)))
